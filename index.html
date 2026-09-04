@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoogleHub67 // Terminal</title>
+    <style>
+        :root {
+            --bg-color: #0b111e;
+            --surface-color: #151f32;
+            --accent-cyan: #00d2c4;
+            --accent-green: #39ff14;
+            --accent-purple: #b026ff;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: #243552;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 950px; margin: 0 auto; }
+
+        header {
+            border: 1px solid var(--border-color);
+            background-color: var(--surface-color);
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        header::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+        }
+
+        .sys-state {
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        h1 { font-size: 1.8rem; color: #fff; margin-bottom: 5px; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 768px) { .grid { grid-template-columns: 1.2fr 1fr; } }
+
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card h2 { font-size: 1.2rem; margin-bottom: 15px; color: var(--accent-cyan); border-bottom: 1px dashed var(--border-color); padding-bottom: 5px; }
+        
+        .project-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(36, 53, 82, 0.5); }
+        .project-title { font-weight: bold; color: #fff; display: flex; justify-content: space-between; }
+        .project-tech { font-size: 0.75rem; color: var(--accent-cyan); }
+        .project-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 3px; }
+
+        ul { list-style-type: none; }
+        li { margin-bottom: 10px; font-size: 0.9rem; position: relative; padding-left: 15px; }
+        li::before { content: ">"; position: absolute; left: 0; color: var(--accent-green); }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .social-link {
+            display: block;
+            background: rgba(0, 210, 196, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 4px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+        .social-link:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 210, 196, 0.1);
+            color: #fff;
+        }
+        .social-platform {
+            color: var(--accent-cyan);
+            font-weight: bold;
+            display: block;
+            font-size: 0.75rem;
+        }
+
+        .highlight-text { color: #fff; font-weight: bold; }
+        footer { text-align: center; padding: 20px 0; font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; }
+        footer a { color: var(--accent-cyan); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="sys-state">
+            <span>[SYSTEM STATE: ACTIVE] // LOC: GREATER NOIDA, IN</span>
+            <span style="color: var(--accent-green);">● SERVER STATUS: SECURE</span>
+        </div>
+        <h1>Aarav Patel // GoogleHub67</h1>
+    </header>
+
+    <div class="grid">
+        
+        <!-- LEFT COLUMN: PERSONAL LIFE & SOCIALS -->
+        <div>
+            <!-- PERSONAL LIFE SECTION -->
+            <section class="card">
+                <h2>👤 Personal Life & Intel</h2>
+                <ul>
+                    <li><span class="highlight-text">Identity:</span> 13-year-old student, competitive chess athlete, and self-taught software tinkerer.</li>
+                    <li><span class="highlight-text">Location:</span> Operating out of Greater Noida, India.</li>
+                    <li><span class="highlight-text">Academics:</span> Math Olympiad Level 2 cleared. Passionate about Advanced Physics, Quantum Mechanics, Chemistry, and Complex Geography grids.</li>
+                    <li><span class="highlight-text">Chess Core:</span> Despises dry positional play; completely dedicated to raw tactical chaos, aggressive gambits, and double-edged win percentages.</li>
+                    <li><span class="highlight-text">Daily Vibes:</span> Fueled by late-night tech rabbit holes, vibe-coding arrays, troubleshooting on the fly, and watching creators like WittyAlien and GothamChess.</li>
+                    <li><span class="highlight-text">Future Trajectory:</span> Aiming to bridge the gap between traditional Software Engineering and Quantum Computing.</li>
+                </ul>
+            </section>
+
+            <!-- SOCIAL HANDLES SECTION -->
+            <section class="card">
+                <h2>🌐 Network Nodes (Social Handles)</h2>
+                <div class="social-grid">
+                    <a href="https://chess.com" target="_blank" class="social-link">
+                        <span class="social-platform">CHESS.COM</span>
+                        @Sturm_Gambit_f4_d5_c4
+                    </a>
+                    <a href="https://reddit.com" target="_blank" class="social-link">
+                        <span class="social-platform">REDDIT</span>
+                        @Remarkable_Elk_1077
+                    </a>
+                    <a href="https://youtube.com" target="_blank" class="social-link">
+                        <span class="social-platform">YOUTUBE</span>
+                        @Aarav_Chess
+                    </a>
+                    <a href="https://x.com" target="_blank" class="social-link">
+                        <span class="social-platform">X (TWITTER)</span>
+                        @Tactic_Titan
+                    </a>
+                    <a href="https://archive.org" target="_blank" class="social-link">
+                        <span class="social-platform">INTERNET ARCHIVE</span>
+                        @aarav_patel605
+                    </a>
+                    <a href="mailto:aaravpatel14.in@gmail.com" class="social-link">
+                        <span class="social-platform">EMAIL</span>
+                        aaravpatel14.in@gmail.com
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- RIGHT COLUMN: SIDE PROJECTS -->
+        <section class="card">
+            <h2>🛠 Secondary Code Archives</h2>
+            
+            <div class="project-item">
+                <div class="project-title"><span>NASA-terminal-dashboard</span> <span class="project-tech">Python</span></div>
+                <p class="project-desc">A basic terminal-based CLI routine built to aggregate real-time ISS telemetry and monitor near-Earth asteroid tracking arrays.</p>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title"><span>DrawffyFish</span> <span class="project-tech">Python</span></div>
+                <p class="project-desc">A specialized production-ready Lichess engine built using python-chess designed explicitly to calculate and force structural draws over complex wins.</p>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title"><span>Chess-Violence-Heatmap</span> <span class="project-tech">Python</span></div>
+                <p class="project-desc">A backend tactical matrix pipeline that parses game data to output coordinate puzzle configurations into CSV files.</p>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title"><span>chromium</span> <span class="project-tech">C++ / Mirror</span></div>
+                <p class="project-desc">A localized ecosystem fork synced from upstream to analyze large-scale codebase architecture and browse browser framework engineering.</p>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title"><span>Basic_Python</span> <span class="project-tech">Python</span></div>
+                <p class="project-desc">A sandbox registry housing early scripts, foundational syntax logic, and coursework layouts built while learning the language at school.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Main framework deployed. Explore repositories on <a href="https://github.com" target="_blank">GitHub</a>.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
