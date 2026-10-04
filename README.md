@@ -14,6 +14,7 @@ The project maintains a streamlined footprint for lightning-fast loading speeds:
 ```text
 └── GoogleHub67.github.io/
     └── index.html         # Main entry point containing structural layout, styling, and portfolio data
+    └── README.md          # This documentation
 ```
 
 ## 🛠️ Features & Built With
