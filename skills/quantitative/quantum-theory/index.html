@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsystem // Quantum State manipulation Matrix</title>
+    <link rel="stylesheet" href="../../../styles.css">
+    <style>
+        .quantum-box {
+            background-color: #000000;
+            border: 1px dashed var(--dim-green);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .input-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .input-group {
+            flex: 1;
+            min-width: 140px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-white);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .input-group input {
+            width: 100%;
+            background: #0d0d0d;
+            border: 1px solid var(--dim-green);
+            color: var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+        .quantum-btn {
+            background: var(--dark-green);
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 10px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .quantum-btn:hover {
+            background: var(--terminal-green);
+            color: #000;
+        }
+        .vector-readout {
+            border-top: 1px dashed var(--dim-green);
+            margin-top: 15px;
+            padding-top: 15px;
+            white-space: pre-wrap;
+            color: var(--text-white);
+        }
+    </style>
+</head>
+<body>
+<div class="mainframe-container">
+    <header class="system-header">
+        <p>[CORE NODE] > SKILLS > QUANTITATIVE > QUANTUM-THEORY</p>
+        <p><a href="../../../index.html">&lt;&lt; RETURN TO CENTRAL MAINFRAME</a></p>
+    </header>
+
+    <section class="directory-node">
+        <div class="node-title">⚛️ QUBIT STATE MANIPULATION & INTERACTIVE METRICS</div>
+        <p>Theoretical analysis framework evaluating pure qubit states, computational basis vectors, and probability density functions across standard measurement operators.</p>
+        
+        <div class="quantum-box">
+            <div class="text-white" style="margin-bottom: 15px; font-weight: bold;">[BLOCH SPHERE STATE CONVERSION INTERFACE]</div>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Theta Angle (θ) [0 to 180°]</label>
+                    <input type="number" id="theta-angle" value="90" min="0" max="180">
+                </div>
+                <div class="input-group">
+                    <label>Phi Angle (φ) [0 to 360°]</label>
+                    <input type="number" id="phi-angle" value="45" min="0" max="360">
+                </div>
+            </div>
+
+            <button class="quantum-btn" onclick="calculateQuantumState()">Compute State Vector</button>
+
+            <div class="vector-readout" id="state-output">>> Awaiting initialization of state vector parameters...</div>
+        </div>
+    </section>
+
+    <section class="directory-node">
+        <div class="node-title">📋 SYSTEMIC CORE OPERATIONS INTERFACES</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Gate Operator</th>
+                    <th>Transformation Protocol</th>
+                    <th>Algebraic Representation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Hadamard (H)</b></td>
+                    <td>Maps basis states into balanced superpositions</td>
+                    <td><code>1/√2 * [[1, 1], [1, -1]]</code></td>
+                </tr>
+                <tr>
+                    <td><b>Pauli-X (NOT)</b></td>
+                    <td>Inverts state vectors along the computational basis</td>
+                    <td><code>[[0, 1], [1, 0]]</code></td>
+                </tr>
+                <tr>
+                    <td><b>Pauli-Z (Phase)</b></td>
+                    <td>Flips the sign of the state's positive phase component</td>
+                    <td><code>[[1, 0], [0, -1]]</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script>
+    function calculateQuantumState() {
+        const thetaDeg = parseFloat(document.getElementById('theta-angle').value) || 0;
+        const phiDeg = parseFloat(document.getElementById('phi-angle').value) || 0;
+
+        // Convert angles to radians for calculation loops
+        const thetaRad = (thetaDeg * Math.PI) / 180;
+        const phiRad = (phiDeg * Math.PI) / 180;
+
+        // Compute amplitude coefficients
+        const alpha = Math.cos(thetaRad / 2);
+        const betaReal = Math.sin(thetaRad / 2) * Math.cos(phiRad);
+        const betaImag = Math.sin(thetaRad / 2) * Math.sin(phiRad);
+
+        // Compute pure state measurement probabilities
+        const probZero = Math.pow(alpha, 2) * 100;
+        const probOne = (Math.pow(betaReal, 2) + Math.pow(betaImag, 2)) * 100;
+
+        // Formulate output string buffer
+        let out = `== [QUANTUM COMPUTATION CORE STREAM COMPILED] ==\n`;
+        out += `[+] State Vector Map: |Ψ⟩ = ${alpha.toFixed(4)}|0⟩ + (${betaReal.toFixed(4)} + ${betaImag.toFixed(4)}i)|1⟩\n`;
+        out += `[+] Probability P(|0⟩): ${probZero.toFixed(2)}%\n`;
+        out += `[+] Probability P(|1⟩): ${probOne.toFixed(2)}%\n\n`;
+
+        // Determine specific state signatures for feedback loops
+        if (Math.abs(probZero - 50) < 0.1) {
+            out += `<span style="color: var(--terminal-green)">[STATUS]: MAXIMUM EQUAL SUPERPOSITION DETECTED // ENTROPY STABLE</span>`;
+        } else if (probZero > 90) {
+            out += `<span style="color: var(--text-white)">[STATUS]: DECAY TO COMPUTATIONAL BASE STATE |0⟩ IN PROGRESS</span>`;
+        } else {
+            out += `<span style="color: var(--text-dim)">[STATUS]: COMPLEX STATE INTERSECTION RUNNING IN BLOCH SPHERE</span>`;
+        }
+
+        document.getElementById('state-output').innerHTML = out;
+    }
+
+    // Initialize layout computation on script boot up
+    document.addEventListener("DOMContentLoaded", calculateQuantumState);
+</script>
+</body>
+</html>
