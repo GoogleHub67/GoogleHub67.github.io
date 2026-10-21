@@ -1,5 +1,5 @@
 /* ===========================================================================
-   [STYLE ENGINE] - TERMINAL GLOBAL UI LAYER
+   [STYLE ENGINE] - GLOBAL RETRO TERMINAL ARCHITECTURE LAYER
    =========================================================================== */
 :root {
     --bg-color: #050505;
@@ -64,11 +64,6 @@ a:hover {
     margin-bottom: 18px;
     font-weight: bold;
 }
-.grid-2col {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-}
 .data-table {
     width: 100%;
     border-collapse: collapse;
@@ -83,4 +78,6 @@ a:hover {
 .data-table th { background-color: var(--dark-green); color: var(--text-white); }
 .data-table tr:nth-child(even) { background-color: #031403; }
 .pulse { animation: blink 1.8s infinite; }
+.text-white { color: var(--text-white); }
+.text-dim { color: var(--dim-green); }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
