@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsystem // Geography Matrix Array</title>
+    <link rel="stylesheet" href="../../../styles.css">
+    <style>
+        .geo-box {
+            background-color: #000000;
+            border: 1px dashed var(--dim-green);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .selector-layout {
+            margin-bottom: 15px;
+        }
+        .selector-layout label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-white);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .selector-layout select {
+            background: #0d0d0d;
+            border: 1px solid var(--dim-green);
+            color: var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 8px;
+            font-size: 1rem;
+            outline: none;
+            width: 100%;
+            max-width: 325px;
+        }
+        .geo-btn {
+            background: var(--dark-green);
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 10px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .geo-btn:hover {
+            background: var(--terminal-green);
+            color: #000;
+        }
+        .geo-readout {
+            border-top: 1px dashed var(--dim-green);
+            margin-top: 15px;
+            padding-top: 15px;
+            white-space: pre-wrap;
+            color: var(--text-white);
+        }
+    </style>
+</head>
+<body>
+<div class="mainframe-container">
+    <header class="system-header">
+        <p>[CORE NODE] > SKILLS > QUANTITATIVE > GEOGRAPHY</p>
+        <p><a href="../../../index.html">&lt;&lt; RETURN TO CENTRAL MAINFRAME</a></p>
+    </header>
+
+    <section class="directory-node">
+        <div class="node-title">🌍 SPATIAL SYSTEM MATRIX & GEOGRAPHICAL TARGETING</div>
+        <p>Conceptual mapping of macro-environmental topologies, regional demographics data vectors, and spatial computing clusters across global networks.</p>
+        
+        <div class="geo-box">
+            <div class="text-white" style="margin-bottom: 15px; font-weight: bold;">[GLOBAL DEPLOYMENT NODE MONITOR]</div>
+            
+            <div class="selector-layout">
+                <label>Select Target Coordinate Target Vector</label>
+                <select id="city-selector">
+                    <option value="SIN">Singapore // Asia Computing Hub</option>
+                    <option value="REK">Reykjavik, Iceland // Cryogenic Grid</option>
+                    <option value="WJK">Wijk aan Zee, Netherlands // Chess Telemetry Matrix</option>
+                    <option value="LON">London, UK // High-Density Relays</option>
+                </select>
+            </div>
+
+            <button class="geo-btn" onclick="queryGeographicCluster()">Query Location Matrix</button>
+
+            <div class="geo-readout" id="geo-output">>> Waiting for coordinate gateway authorization signal...</div>
+        </div>
+    </section>
+</div>
+
+<script>
+    const geoMatrixLog = {
+        'SIN': {
+            region: "Asia Oceania Cluster",
+            coords: "1.3521° N, 103.8198° E",
+            profile: "Premium technology infrastructure core. Ultimate connectivity gateway node with maximum server efficiency parameters."
+        },
+        'REK': {
+            region: "Europe Arctic Axis",
+            coords: "64.1466° N, 21.9426° W",
+            profile: "Naturally cooled high-performance server grids. Optimal geographic placement for green processing clusters."
+        },
+        'WJK': {
+            region: "Europe Atlantic Flank",
+            coords: "52.4931° N, 4.5932° E",
+            profile: "Historical epicentre for volatile grandmaster calculation nodes. Strategic ground tracking aggressive chess mechanics."
+        },
+        'LON': {
+            region: "Europe Western Core",
+            coords: "51.5074° N, 0.1278° W",
+            profile: "High-density data infrastructure. Core network transit routing point handling financial tracking operations on high bandwidth pipes."
+        }
+    };
+
+    function queryGeographicCluster() {
+        const key = document.getElementById('city-selector').value;
+        const details = geoMatrixLog[key];
+        if (!details) return;
+
+        let log = `== [GEOGRAPHIC INTERFACE TARGET ACQUIRED] ==\n`;
+        log += `[+] Target Area Sector Code : ${key}\n`;
+        log += `[+] Macro Regional Domain   : ${details.region}\n`;
+        log += `[+] Spatial Grid Coordinates: ${details.coords}\n\n`;
+        log += `<span class="text-white"><b>[INFRASTRUCTURE SECTOR INDEX OVERVIEW]:</b>\n${details.profile}</span>`;
+
+        document.getElementById('geo-output').innerHTML = log;
+    }
+
+    document.addEventListener("DOMContentLoaded", queryGeographicCluster);
+</script>
+</body>
+</html>
