@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsystem // Maths & Physics Matrix</title>
+    <link rel="stylesheet" href="../../../styles.css">
+    <style>
+        .sandbox-box {
+            background-color: #000000;
+            border: 1px dashed var(--dim-green);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .input-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .input-group {
+            flex: 1;
+            min-width: 140px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-white);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .input-group input {
+            width: 100%;
+            background: #0d0d0d;
+            border: 1px solid var(--dim-green);
+            color: var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+        .matrix-btn {
+            background: var(--dark-green);
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 10px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .matrix-btn:hover {
+            background: var(--terminal-green);
+            color: #000;
+        }
+        .telemetry-readout {
+            border-top: 1px dashed var(--dim-green);
+            margin-top: 15px;
+            padding-top: 15px;
+            white-space: pre-wrap;
+            color: var(--text-white);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<div class="mainframe-container">
+    <header class="system-header">
+        <p>[CORE NODE] > SKILLS > QUANTITATIVE > MATHS-AND-PHYSICS</p>
+        <p><a href="../../../index.html">&lt;&lt; RETURN TO CENTRAL MAINFRAME</a></p>
+    </header>
+
+    <section class="directory-node">
+        <div class="node-title">📐 OLYMPIAD MODULAR LOGIC & KINETIC PARSING ENGINE</div>
+        <p>Translating multi-dimensional geometric logic formulas and subatomic movement functions into boundaryless logic execution scripts.</p>
+        
+        <div class="sandbox-box">
+            <div class="text-white" style="margin-bottom: 15px; font-weight: bold;">[DISCRETE CALCULATION & PROJECTILE COUPLING MODULE]</div>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Base Velocity (m/s)</label>
+                    <input type="number" id="base-velocity" value="38" min="1" max="100">
+                </div>
+                <div class="input-group">
+                    <label>Launch Vector Angle (°)</label>
+                    <input type="number" id="launch-vector" value="42" min="0" max="90">
+                </div>
+                <div class="input-group">
+                    <label>Modulo Space Base (n)</label>
+                    <input type="number" id="modulo-base" value="7" min="2" max="1000">
+                </div>
+            </div>
+
+            <button class="matrix-btn" onclick="executeAdvancedKinematics()">Compute Array Matrices</button>
+
+            <div class="telemetry-readout" id="math-physics-log">>> Standing by for calculation matrix parameter strings...</div>
+        </div>
+    </section>
+
+    <section class="directory-node">
+        <div class="node-title">📋 VERIFIED ACADEMIC INTEL VECTORS</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Domain Vector</th>
+                    <th>Analytical Framework Objective</th>
+                    <th>System Compliance Staging</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Discrete Mathematics</b></td>
+                    <td>Solving Ramsey number configurations, graph extrema, and complex modular arithmetic sets.</td>
+                    <td><span class="text-white">LEVEL 2 CLEARED</span></td>
+                </tr>
+                <tr>
+                    <td><b>Quantum Analytics</b></td>
+                    <td>Evaluating cryogenic qubit properties, superposition state mechanics, and particle wave decay.</td>
+                    <td><span class="text-white">ACTIVE RESEARCH</span></td>
+                </tr>
+                <tr>
+                    <td><b>Projectile Dynamics</b></td>
+                    <td>Modeling the Magnus effect, aerodynamic air friction variables, and surface moisture drift coefficients.</td>
+                    <td><span class="text-terminal">CRICKET FLUID MODEL</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script>
+    function executeAdvancedKinematics() {
+        const v0 = parseFloat(document.getElementById('base-velocity').value) || 0;
+        const thetaDeg = parseFloat(document.getElementById('launch-vector').value) || 0;
+        const modBase = parseInt(document.getElementById('modulo-base').value) || 1;
+
+        // Kinematics calculations (Standard g = 9.81 m/s^2)
+        const rad = thetaDeg * (Math.PI / 180);
+        const g = 9.81;
+        const range = (Math.pow(v0, 2) * Math.sin(2 * rad)) / g;
+        const apex = (Math.pow(v0, 2) * Math.pow(Math.sin(rad), 2)) / (2 * g);
+
+        // Modular arithmetic calculation: compute (floor(range) ^ 2) mod modBase
+        const integerComponent = Math.floor(range);
+        const modularSolution = (integerComponent * integerComponent) % modBase;
+
+        let log = `== [KINETIC STRATEGY & NUMERICAL PROOF CORE ENGINE ACTIVE] ==\n`;
+        log += `[+] Initial Projectile Velocity  : ${v0} m/s (~ ${(v0 * 3.6).toFixed(1)} km/h)\n`;
+        log += `[+] Parabolic Range Trajectory   : ${range.toFixed(3)} meters\n`;
+        log += `[+] Maximum Peak Displacement Apex: ${apex.toFixed(3)} meters\n`;
+        log += `[+] Discrete Olympiad Space Check: (${integerComponent}² mod ${modBase}) ≡ ${modularSolution}\n\n`;
+
+        if (range >= 75) {
+            log += `<span style="color: var(--terminal-green)">[STATUS]: OPTIMAL FORCE TRANSFER DETECTED // FLUID DEFLECTION OVER BOUNDARY STAGE</span>`;
+        } else {
+            log += `<span style="color: var(--text-dim)">[STATUS]: PARALLEL NOMINAL LOAD EXPANSION SYSTEM WORKING WITHIN SAFE SPACE LIMITS</span>`;
+        }
+
+        document.getElementById('math-physics-log').innerHTML = log;
+    }
+
+    document.addEventListener("DOMContentLoaded", executeAdvancedKinematics);
+</script>
+</body>
+</html>
