@@ -4,7 +4,7 @@
 
 # --- CORE CHESS ENGINE & BOT PIPELINES ---
 python-chess==1.10.0      # Advanced piece vector manipulation and PGN validation tracking
-requests==2.32.3          # Real-time Lichess API telemetry transport connections
+requests==2.33.0          # Real-time Lichess API telemetry transport connections
 websockets==12.0          # Low-latency streaming connection pipelines for active match loops
 
 # --- HARDWARE AUTOMATION & IOT EMBD MATRICES ---
@@ -17,4 +17,4 @@ PyMuPDF==1.24.2           # High-throughput text/byte parsing for local PII data
 regex==2024.4.16          # Advanced pattern processing loops for data-leak prevention models
 
 # --- REPOSITORY RUNTIME ENVIRONMENT TOOLS ---
-uv==0.1.35                # Ultra-fast package compilation wrapper to bypass standard pip throttles
+uv==0.13.4                # Ultra-fast package compilation wrapper to bypass standard pip throttles
