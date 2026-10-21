@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsystem // Valence Orbitals & Lattice Models</title>
+    <link rel="stylesheet" href="../../../styles.css">
+    <style>
+        .chem-box {
+            background-color: #000000;
+            border: 1px dashed var(--dim-green);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .control-group {
+            margin-bottom: 15px;
+        }
+        .control-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-white);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .control-group select {
+            background: #0d0d0d;
+            border: 1px solid var(--dim-green);
+            color: var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 8px;
+            font-size: 1rem;
+            outline: none;
+            width: 100%;
+            max-width: 300px;
+        }
+        .chem-btn {
+            background: var(--dark-green);
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 10px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .chem-btn:hover {
+            background: var(--terminal-green);
+            color: #000;
+        }
+        .orbital-readout {
+            border-top: 1px dashed var(--dim-green);
+            margin-top: 15px;
+            padding-top: 15px;
+            white-space: pre-wrap;
+            color: var(--text-white);
+        }
+    </style>
+</head>
+<body>
+<div class="mainframe-container">
+    <header class="system-header">
+        <p>[CORE NODE] > SKILLS > QUANTITATIVE > CHEMISTRY</p>
+        <p><a href="../../../index.html">&lt;&lt; RETURN TO CENTRAL MAINFRAME</a></p>
+    </header>
+
+    <section class="directory-node">
+        <div class="node-title">🧪 SUBATOMIC ELECTRON ARCHITECTURES & GEOMETRIES</div>
+        <p>Quantum mechanical parsing of thermodynamic electron structures, orbital angular momenta, and covalent lattice configurations.</p>
+        
+        <div class="chem-box">
+            <div class="text-white" style="margin-bottom: 15px; font-weight: bold;">[VALENCE TRANSITION INTERRUPT HANDLER]</div>
+            
+            <div class="control-group">
+                <label>Select Target Element Element Matrix</label>
+                <select id="element-selector">
+                    <option value="C">Carbon (C) // Atomic Num: 6</option>
+                    <option value="Si">Silicon (Si) // Atomic Num: 14</option>
+                    <option value="Cu">Copper (Cu) // Atomic Num: 29</option>
+                </select>
+            </div>
+
+            <button class="chem-btn" onclick="parseOrbitalMatrix()">Compute Electron Grid</button>
+
+            <div class="orbital-readout" id="orbital-output">>> Standing by for element structural compilation...</div>
+        </div>
+    </section>
+
+    <section class="directory-node">
+        <div class="node-title">📋 QUANTUM MECHANICAL QUANTUM SHELL DEFINITIONS</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Sub-Shell Type</th>
+                    <th>Azimuthal Number (l)</th>
+                    <th>Max Electron Density Capacity</th>
+                    <th>Spatial Coordinate Geometry</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>s-orbital</b></td>
+                    <td>0</td>
+                    <td>2e⁻</td>
+                    <td>Spherical Distribution Matrix</td>
+                </tr>
+                <tr>
+                    <td><b>p-orbital</b></td>
+                    <td>1</td>
+                    <td>6e⁻</td>
+                    <td>Dumbbell Orthogonal Axes Loops</td>
+                </tr>
+                <tr>
+                    <td><b>d-orbital</b></td>
+                    <td>2</td>
+                    <td>10e⁻</td>
+                    <td>Cloverleaf Complex Geometric Nodes</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script>
+    const elementDatabase = {
+        'C': {
+            name: "Carbon",
+            config: "1s² 2s² 2p²",
+            valence: 4,
+            lattice: "Diamond Cubic Covalent Interlock",
+            reactivity: "High catenation tendency via localized sp³ hybridization matrices."
+        },
+        'Si': {
+            name: "Silicon",
+            config: "1s² 2s² 2p⁶ 3s² 3p²",
+            valence: 4,
+            lattice: "Face-Centered Diamond Lattice",
+            reactivity: "Metalloid valence band gap structures ideal for semiconductor pipelines."
+        },
+        'Cu': {
+            name: "Copper",
+            config: "1s² 2s² 2p⁶ 3s² 3p⁶ 3d¹⁰ 4s¹",
+            valence: 1,
+            lattice: "Face-Centered Cubic (FCC) Metallic Array",
+            reactivity: "Anomalous d-shell stabilization logic generating supreme electrical conductivity conduits."
+        }
+    };
+
+    function parseOrbitalMatrix() {
+        const elKey = document.getElementById('element-selector').value;
+        const data = elementDatabase[elKey];
+        if (!data) return;
+
+        let log = `== [SUBATOMIC STRUCTURE ENGINE COMPILED] ==\n`;
+        log += `[+] Target Element Name     : ${data.name}\n`;
+        log += `[+] Full Sub-Shell Matrix   : ${data.config}\n`;
+        log += `[+] Valence Shell Electrons  : ${data.valence} e⁻\n`;
+        log += `[+] Crystal Lattice Profile : ${data.lattice}\n\n`;
+        log += `<span class="text-white"><b>[CHEMICAL BEHAVIOR PROFILE]:</b>\n${data.reactivity}</span>`;
+
+        document.getElementById('orbital-output').innerHTML = log;
+    }
+
+    document.addEventListener("DOMContentLoaded", parseOrbitalMatrix);
+</script>
+</body>
+</html>
