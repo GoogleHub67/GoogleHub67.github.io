@@ -1,3 +1,8 @@
+- name: "julia-pdf-reader"
+  desc: "A lightweight Julia-based PDF reader built for high-performance text extraction, seamless metadata parsing, and efficient document workflows."
+  lang: "Julia"
+  cat: "utils"
+  url: "https://github.com/GoogleHub67/julia-pdf-reader"
 - name: "GoogleHub67.github.io"
   desc: "Source code repository for Aarav Patel's personal developer portfolio site. Hosted via GitHub Pages, it acts as a central hub displaying his live software engine portfolios."
   lang: "HTML"
@@ -67,7 +72,7 @@
 - name: "local-ssd-file-mapper"
   desc: "Fast client-side web application layout built using the native File System Access API to catalog local drive partitions and directories straight from the browser."
   lang: "HTML"
-  cat: "web"
+  cat: "utils"
   url: "https://github.com/GoogleHub67/local-ssd-file-mapper"
 
 - name: "manim"
@@ -139,7 +144,7 @@
 - name: "rust-calc"
   desc: "High-performance web calculator structured to replicate the Google mathematical solver layout, compiled natively to browser nodes via WebAssembly targets."
   lang: "Rust"
-  cat: "web"
+  cat: "utils"
   url: "https://github.com/GoogleHub67/rust-calc"
 
 - name: "scala-graphing-calculator"
@@ -151,7 +156,7 @@
 - name: "github-following-checker"
   desc: "TypeScript social graph analyzer auditing profile relationship records to track unfollows and highlight non-reciprocal developer accounts automatically."
   lang: "TypeScript"
-  cat: "ops"
+  cat: "utils"
   url: "https://github.com/GoogleHub67/github-following-checker"
 
 - name: "chess-matrix-explorer"
