@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsystem // Academic Evaluation Telemetry</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .report-card-box {
+            background-color: #000000;
+            border: 1px dashed var(--dim-green);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .metric-banner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .metric-stat-card {
+            background: #0d0d0d;
+            border: 1px solid var(--dark-green);
+            padding: 15px;
+            text-align: center;
+        }
+        .metric-big-num {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--text-white);
+            margin: 5px 0;
+            text-shadow: 0 0 10px rgba(51, 255, 51, 0.1);
+        }
+        .progress-bar-container {
+            background: #111;
+            border: 1px solid var(--dark-green);
+            height: 12px;
+            margin-top: 5px;
+            position: relative;
+        }
+        .progress-fill {
+            background: var(--terminal-green);
+            height: 100%;
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+        .grade-tag {
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            background: var(--dark-green);
+            border: 1px solid var(--dim-green);
+            color: var(--terminal-green);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="mainframe-container">
+    <header class="system-header">
+        <p>[CORE NODE] > RECORDS > ACADEMICS > PART_1</p>
+        <p><a href="../../index.html">&lt;&lt; RETURN TO CENTRAL MAINFRAME</a></p>
+    </header>
+
+    <!-- TERM-1 TELEMETRY OVERVIEW -->
+    <section class="directory-node">
+        <div class="node-title">📊 TERM-1 EVALUATION TELEMETRY LOGS</div>
+        <p>Performance profile indexes evaluating data inputs across standard curriculum matrices. Data matches repository parameters exactly.</p>
+        
+        <div class="report-card-box">
+            <div class="text-white" style="margin-bottom: 15px; font-weight: bold;">[CENTRAL MARKSHEET EVALUATION BUNDLE]</div>
+            
+            <div class="metric-banner-grid">
+                <div class="metric-stat-card">
+                    <div class="text-dim" style="font-size:0.8rem; text-transform:uppercase;">Cumulative Aggregate</div>
+                    <div class="metric-big-num" id="cumulative-avg">90.04%</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-fill" id="avg-bar" style="width: 90.04%;"></div>
+                    </div>
+                </div>
+                <div class="metric-stat-card">
+                    <div class="text-dim" style="font-size:0.8rem; text-transform:uppercase;">Consolidated Status</div>
+                    <div class="metric-big-num" style="color: var(--terminal-green);">GRADE A2</div>
+                    <div style="font-size:0.75rem; margin-top:8px;" class="text-dim">Gross Points: 540.25 / 600</div>
+                </div>
+            </div>
+            <!-- DYNAMIC REPORT CARD MATRIX -->
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Subject Matrix Unit</th>
+                            <th>Internal Assessment (20)</th>
+                            <th>Half-Yearly Exam (80)</th>
+                            <th>Total Marks (100)</th>
+                            <th>Grade Band</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>Maths</b></td>
+                            <td>19.92</td>
+                            <td>79.00</td>
+                            <td><span class="text-white"><b>98.92</b></span></td>
+                            <td><span class="grade-tag">A1</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>Science</b></td>
+                            <td>19.25</td>
+                            <td>76.50</td>
+                            <td><span class="text-white"><b>95.75</b></span></td>
+                            <td><span class="grade-tag">A1</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>Computer Science</b></td>
+                            <td>20.00</td>
+                            <td>72.00</td>
+                            <td><span class="text-white"><b>92.00</b></span></td>
+                            <td><span class="grade-tag">A1</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>French</b></td>
+                            <td>19.83</td>
+                            <td>71.50</td>
+                            <td><span class="text-white"><b>91.33</b></span></td>
+                            <td><span class="grade-tag">A1</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>Social Science</b></td>
+                            <td>20.00</td>
+                            <td>71.00</td>
+                            <td><span class="text-white"><b>91.00</b></span></td>
+                            <td><span class="grade-tag">A1</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>English</b></td>
+                            <td>19.83</td>
+                            <td>64.50</td>
+                            <td><span class="text-white"><b>84.33</b></span></td>
+                            <td><span class="grade-tag" style="color: #ffaa00; border-color: #ffaa00;">A2</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>Hindi</b></td>
+                            <td>15.92</td>
+                            <td>63.00</td>
+                            <td><span class="text-white"><b>78.92</b></span></td>
+                            <td><span class="grade-tag" style="color: var(--alert-red); border-color: var(--alert-red);">B1</span></td>
+                        </tr>
+                        <tr style="background-color: var(--dark-green); font-weight: bold;">
+                            <td><span class="text-white">COMBINED TOTAL</span></td>
+                            <td>114.75</td>
+                            <td>425.50</td>
+                            <td><span class="text-white">540.25 / 600</span></td>
+                            <td><span class="text-white">AGG A2</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <!-- CO-SCHOLASTIC PERFORMANCE MATRIX -->
+    <section class="directory-node">
+        <div class="node-title">🎯 CO-SCHOLASTIC PERFORMANCE PROFILE</div>
+        <p>Evaluation matrices mapping active vocational competencies, cognitive fluency, and extracurricular execution logs.</p>
+        
+        <div class="table-responsive" style="margin-top: 15px;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Extracurricular Subject Vector</th>
+                        <th>Assigned Grade Metric</th>
+                        <th>System Evaluation Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Interdisciplinary Area (General Knowledge)</b></td>
+                        <td><span class="text-white"><b>Grade A</b></span></td>
+                        <td><span class="grade-tag">OPTIMAL</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Physical Education & Sports</b></td>
+                        <td><span class="text-white"><b>Grade A</b></span></td>
+                        <td><span class="grade-tag" style="animation: blink 1s infinite;">MAX_VELOCITY</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Vocational Education (Financial Literacy)</b></td>
+                        <td><span class="text-white"><b>Grade A</b></span></td>
+                        <td><span class="grade-tag">PEN_ARBITRAGE_STABLE</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Art Education (Music / Theater / Dance)</b></td>
+                        <td><span class="text-white"><b>Grade A</b></span></td>
+                        <td><span class="grade-tag">NOMINAL</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <p class="text-dim">💡 <i>System Index Context: Consolidated performance status locked at 90.04% Cumulative Aggregate. All behavioral bands and evaluation scales conform to standard curriculum manifests.</i></p>
+    </section>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Handle precise rendering delay for the graphical progress bar fill
+        setTimeout(() => {
+            const progressFillElement = document.getElementById('avg-bar');
+            if (progressFillElement) {
+                progressFillElement.style.width = "90.04%";
+            }
+        }, 200);
+    });
+</script>
+</body>
+</html>
