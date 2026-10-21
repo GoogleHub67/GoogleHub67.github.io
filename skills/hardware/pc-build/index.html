@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsystem // Workstation Spec & Thermal Grid</title>
+    <link rel="stylesheet" href="../../../styles.css">
+    <style>
+        .thermal-monitor-box {
+            background-color: #000000;
+            border: 1px dashed var(--dim-green);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .core-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .core-node-card {
+            background: #0d0d0d;
+            border: 1px solid var(--dark-green);
+            padding: 12px;
+            text-align: center;
+        }
+        .core-temp {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .temp-nominal { color: var(--terminal-green); }
+        .temp-warn { color: #ffaa00; }
+        .temp-critical { color: var(--alert-red); }
+    </style>
+</head>
+<body>
+<div class="mainframe-container">
+    <header class="system-header">
+        <p>[CORE NODE] > SKILLS > HARDWARE > PC-BUILD</p>
+        <p><a href="../../../index.html">&lt;&lt; RETURN TO CENTRAL MAINFRAME</a></p>
+    </header>
+
+    <section class="directory-node">
+        <div class="node-title">☢️ WORKSTATION PLATFORM // "NUCLEAR REACTOR"</div>
+        <p>Technical hardware configurations and component topology arrays for the primary local compiling station.</p>
+        <br>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Subsystem Component</th>
+                    <th>Hardware Specification Specification Model</th>
+                    <th>Operational Capacity Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Central Processor (CPU)</b></td>
+                    <td>Intel Core i5-12400F // 6 Cores // 12 Threads</td>
+                    <td>Base Frequency Runtime Layer</td>
+                </tr>
+                <tr>
+                    <td><b>Graphics Accelerator (GPU)</b></td>
+                    <td>ZOTAC Gaming GeForce RTX 3060 Twin Edge 12GB GDDR6</td>
+                    <td>CUDA Neural Compilation Grid</td>
+                </tr>
+                <tr>
+                    <td><b>System Memory (RAM)</b></td>
+                    <td>16GB DDR4 Dual-Channel Topology Array</td>
+                    <td>High-Density Buffer Sandbox</td>
+                </tr>
+                <tr>
+                    <td><b>Storage Node</b></td>
+                    <td>512GB NVMe M.2 Solid State Drive Node</td>
+                    <td>POSIX Direct-I/O Read Stream</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="directory-node">
+        <div class="node-title">🌡️ LIVE CORES THERMAL GRID DIAGNOSTICS</div>
+        <p>Automated diagnostic readouts simulating core cluster dissipation profiles under structural multithreading loads.</p>
+        
+        <div class="thermal-monitor-box">
+            <div class="text-white" style="font-weight: bold;">[THERMAL MATRIX TELEMETRY SENSORS]</div>
+            
+            <div class="core-grid" id="cpu-thermal-grid">
+                <!-- JavaScript appends core trackers instantly on load -->
+            </div>
+            
+            <div style="margin-top: 20px; font-size: 0.9rem;" id="thermal-summary">
+                >> Syncing core telemetry loop matrices...
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function updateThermalGrid() {
+        const gridContainer = document.getElementById('cpu-thermal-grid');
+        let htmlBuffer = "";
+        let totalTemp = 0;
+        const totalCores = 6;
+
+        for (let i = 0; i < totalCores; i++) {
+            // Simulate random processing temperature changes between 42C and 78C
+            const coreTemp = Math.floor(Math.random() * (78 - 42 + 1)) + 42;
+            totalTemp += coreTemp;
+
+            let statusClass = "temp-nominal";
+            if (coreTemp >= 70) { statusClass = "temp-critical"; }
+            else if (coreTemp >= 58) { statusClass = "temp-warn"; }
+
+            htmlBuffer += `
+                <div class="core-node-card">
+                    <div class="text-dim" style="font-size:0.75rem;">CPU_CORE_0${i}</div>
+                    <div class="core-temp ${statusClass}">${coreTemp}°C</div>
+                </div>
+            `;
+        }
+
+        gridContainer.innerHTML = htmlBuffer;
+        
+        const meanTemp = totalTemp / totalCores;
+        let healthSignal = `<span style="color: var(--terminal-green)">GRID STATUS: OPTIMAL // VENTILATION STRUCTURAL PARITY STABLE</span>`;
+        if (meanTemp >= 65) {
+            healthSignal = `<span style="color: var(--alert-red)">GRID STATUS: ELEVATED FLUX OVERLOAD // THERMAL THROTTLING HAZARD</span>`;
+        }
+
+        document.getElementById('thermal-summary').innerHTML = `
+            ● Mean Core Dissipation Index: <b>${meanTemp.toFixed(1)}°C</b><br>
+            ● Cooling Loop Pump Speed    : 2400 RPM (PWM Target Standard)<br>
+            ● ${healthSignal}
+        `;
+    }
+
+    // Initialize loop and refresh every 3 seconds to match telemetry tracking monitors
+    document.addEventListener("DOMContentLoaded", () => {
+        updateThermalGrid();
+        setInterval(updateThermalGrid, 3000);
+    });
+</script>
+</body>
+</html>
