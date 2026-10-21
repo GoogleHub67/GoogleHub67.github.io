@@ -60,7 +60,7 @@
 
         <!-- DYNAMIC FILTER CONTROLS CONTAINER -->
         <div class="filter-controls" id="dynamic-filter-bar">
-            <!-- Buttons will be automatically built by JavaScript on execution initialization -->
+            <!-- Buttons are automatically built by JavaScript on execution initialization -->
         </div>
 
         <!-- REPOSITORY CARDS CONTAINER -->
@@ -70,7 +70,9 @@
                 <h3><a href="{{ repo.url }}" target="_blank">{{ repo.name }}</a></h3>
                 <p style="font-size: 0.9rem; margin: 8px 0; min-height: 54px;">{{ repo.desc }}</p>
                 <div style="margin-top: 12px;">
-                    <span class="tag-pill" style="border-color: var(--terminal-green); color: var(--terminal-green);">{{ repo.lang }}</span>
+                    <span class="tag-pill" style="border-color: var(--terminal-green); color: var(--terminal-green);">
+                        {{ repo.lang | join: ", " }}
+                    </span>
                     <span class="tag-pill" style="text-transform: uppercase;">{{ repo.cat }}</span>
                 </div>
             </div>
@@ -84,25 +86,40 @@
         const filterBar = document.getElementById('dynamic-filter-bar');
         const cards = document.querySelectorAll('.archive-card');
         
-        // Step 1: Scan all rendered cards and collect every unique category tag
+        // Translation dictionary for clean visual button display names
+        const labelTransform = {
+            "dflt": "Profiles",
+            "sys": "Systems",
+            "ops": "Automation/Ops",
+            "db": "Databases",
+            "chess": "Chess Engines",
+            "game": "Games/Pranks",
+            "lang": "Language Labs",
+            "web": "Web Apps",
+            "infra": "Infrastructure",
+            "app": "Desktop Apps"
+        };
+
+        // Scan all rendered cards and collect every unique category tag
         const categories = new Set();
         cards.forEach(card => {
             const cat = card.getAttribute('data-cat');
             if (cat) categories.add(cat);
         });
 
-        // Step 2: Build the baseline "All Assets" control node
+        // Build the baseline "All Assets" control node
         let buttonsHTML = `<button class="filter-btn active-filter" data-target="all">All Assets</button>`;
 
-        // Step 3: Loop through unique tags found to assemble custom buttons automatically
+        // Loop through unique tags found to assemble custom buttons automatically
         categories.forEach(cat => {
-            buttonsHTML += `<button class="filter-btn" data-target="${cat}">${cat}</button>`;
+            const visualName = labelTransform[cat] || cat;
+            buttonsHTML += `<button class="filter-btn" data-target="${cat}">${visualName}</button>`;
         });
 
         // Mount all computed buttons to the DOM
         filterBar.innerHTML = buttonsHTML;
 
-        // Step 4: Attach a single event listener to the container for clean click routing
+        // Attach an event listener to the container for clean click routing
         filterBar.addEventListener('click', (e) => {
             if (!e.target.classList.contains('filter-btn')) return;
 
