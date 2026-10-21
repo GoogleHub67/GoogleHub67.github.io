@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsystem // IoT Embedded Board Mapping</title>
+    <link rel="stylesheet" href="../../../styles.css">
+    <style>
+        .iot-monitor-box {
+            background-color: #000000;
+            border: 1px dashed var(--dim-green);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .board-pins-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+            max-width: 480px;
+        }
+        .pin-node {
+            background: #0d0d0d;
+            border: 1px solid var(--dark-green);
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+        .pin-high { 
+            background-color: var(--dark-green);
+            color: var(--terminal-green);
+            border-color: var(--terminal-green);
+            box-shadow: inset 0 0 5px var(--dim-green);
+        }
+        .pin-low { 
+            color: #444; 
+        }
+    </style>
+</head>
+<body>
+<div class="mainframe-container">
+    <header class="system-header">
+        <p>[CORE NODE] > SKILLS > HARDWARE > IOT-EMBEDDED</p>
+        <p><a href="../../../index.html">&lt;&lt; RETURN TO CENTRAL MAINFRAME</a></p>
+    </header>
+
+    <section class="directory-node">
+        <div class="node-title">📟 IOT RASPBERRY PI CHESSBOARD MATRIX INTERFACE</div>
+        <p>Embedded sensor matrix parsing script running on a Raspberry Pi 4 B. Uses electronic Hall-Effect sensors and shift-register arrays mapped across GPIO matrices to detect real-time piece displacement coordinates.</p>
+        
+        <div class="iot-monitor-box">
+            <div class="text-white" style="font-weight: bold;">[ACTIVE BOARD PIN SCANNER TELEMETRY]</div>
+            <p class="text-dim" style="font-size: 0.85rem; margin-top: 5px;">Mux Address Multiplexing Scan Cycle Rate: 50Hz</p>
+            
+            <div class="board-pins-grid" id="gpio-matrix">
+                <!-- JavaScript appends rows and rank square maps dynamically -->
+            </div>
+            
+            <div style="margin-top: 20px; font-size: 0.9rem;" id="iot-summary">
+                >> Syncing physical I/O SPI channels...
+            </div>
+        </div>
+    </section>
+
+    <section class="directory-node">
+        <div class="node-title">📋 BUS PERIPHERAL LAYER INTERFACES</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Bus Interface Protocol</th>
+                    <th>Bus Speed Frequency</th>
+                    <th>Sub-circuit Hardware Target Mapping</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>SPI (bus 0, device 0)</b></td>
+                    <td>16 MHz Clock Line Rate</td>
+                    <td>74HC165 8-Bit Cascade Input Shift Registers</td>
+                </tr>
+                <tr>
+                    <td><b>I2C (bus 1)</b></td>
+                    <td>400 kHz Fast Mode Channel</td>
+                    <td>SSD1306 128x64 Local Status Display Panel</td>
+                </tr>
+                <tr>
+                    <td><b>UART Engine</b></td>
+                    <td>115200 Baud Diagnostic Output</td>
+                    <td>Serial Console Core Debug Line Monitoring</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script>
+    const squares = ['a8','b8','c8','d8','e8','f8','g8','h8',
+                     'a7','b7','c7','d7','e7','f7','g7','h7',
+                     'a6','b6','c6','d6','e6','f6','g6','h6',
+                     'a5','b5','c5','d5','e5','f5','g5','h5',
+                     'a4','b4','c4','d4','e4','f4','g4','h4',
+                     'a3','b3','c3','d3','e3','f3','g3','h3',
+                     'a2','b2','c2','d2','e2','f2','g2','h2',
+                     'a1','b1','c1','d1','e1','f1','g1','h1'];
+
+    function scanGpios() {
+        const matrixContainer = document.getElementById('gpio-matrix');
+        let htmlBuffer = "";
+        let highCount = 0;
+
+        squares.forEach((sq) => {
+            // Emulate baseline piece placements (Ranks 1,2 and 7,8 have pieces typically)
+            const rank = parseInt(sq[1]);
+            let isTriggered = (rank === 1 || rank === 2 || rank === 7 || rank === 8);
+            
+            // Introduce occasional live noise or movement simulation
+            if (Math.random() > 0.97) {
+                isTriggered = !isTriggered;
+            }
+
+            if (isTriggered) { highCount++; }
+            const statusClass = isTriggered ? "pin-high" : "pin-low";
+            const bitVal = isTriggered ? "1" : "0";
+
+            htmlBuffer += `
+                <div class="pin-node ${statusClass}">
+                    <span style="font-weight:bold;">${sq}</span>
+                    <span style="font-size:0.65rem; opacity:0.7;">[${bitVal}]</span>
+                </div>
+            `;
+        });
+
+        matrixContainer.innerHTML = htmlBuffer;
+
+        document.getElementById('iot-summary').innerHTML = `
+            ● Total Mapped Junctions Scan: <b>64 Points Checked</b><br>
+            ● High Signals (Sensors Engaged): <span class="text-white"><b>${highCount} Nodes</b></span><br>
+            ● SPI Frame Verification Code : <span class="text-white">0x${(Math.floor(Math.random() * 255)).toString(16).toUpperCase()}</span><br>
+            ● <span class="text-terminal">CORE MATRIX LOGIC STATUS: STABLE // INTERRUPT HANDLERS READY</span>
+        `;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        scanGpios();
+        setInterval(scanGpios, 2000); // Clock scan sync pulse emulator loops
+    });
+</script>
+</body>
+</html>
