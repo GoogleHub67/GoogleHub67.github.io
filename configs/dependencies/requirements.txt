@@ -1,0 +1,20 @@
+# ===========================================================================
+# [DEPENDENCY MANIFEST] - CENTRAL PYTHONEER MATRIX FOR GOOGLEHUB67
+# ===========================================================================
+
+# --- CORE CHESS ENGINE & BOT PIPELINES ---
+python-chess==1.10.0      # Advanced piece vector manipulation and PGN validation tracking
+requests==2.32.3          # Real-time Lichess API telemetry transport connections
+websockets==12.0          # Low-latency streaming connection pipelines for active match loops
+
+# --- HARDWARE AUTOMATION & IOT EMBD MATRICES ---
+RPi.GPIO==0.7.1           # Direct low-level pin address mapping for Raspberry Pi 4 arrays
+spidev==3.6               # SPI bus clock management for Hall-Effect shift register integration
+smbus2==0.4.3             # I2C fast-mode fast read/write lines for local OLED debugging shields
+
+# --- SECURITY, PARSING & COMPILATION FLOWS ---
+PyMuPDF==1.24.2           # High-throughput text/byte parsing for local PII data redaction sandboxes
+regex==2024.4.16          # Advanced pattern processing loops for data-leak prevention models
+
+# --- REPOSITORY RUNTIME ENVIRONMENT TOOLS ---
+uv==0.1.35                # Ultra-fast package compilation wrapper to bypass standard pip throttles
