@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsystem // Automated Apology Pipeline</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .pipeline-box {
+            background-color: #000000;
+            border: 1px dashed var(--dim-green);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .pipeline-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .pipeline-btn {
+            background: var(--dark-green);
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 10px 15px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        .pipeline-btn:hover {
+            background: var(--terminal-green);
+            color: #000;
+        }
+        .terminal-display {
+            background: #000;
+            border: 1px solid var(--dark-green);
+            padding: 15px;
+            font-family: var(--font-stack);
+            color: var(--text-white);
+            white-space: pre-wrap;
+            min-height: 180px;
+            overflow-y: auto;
+        }
+        .badge-alert {
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            background: var(--alert-bg);
+            border: 1px solid var(--alert-red);
+            color: var(--alert-red);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="mainframe-container">
+    <header class="system-header">
+        <p>[CORE NODE] > RECORDS > DEMERITS</p>
+        <p><a href="../../index.html">&lt;&lt; RETURN TO CENTRAL MAINFRAME</a></p>
+    </header>
+
+    <!-- AUTOMATED INCIDENT REPORTING -->
+    <section class="directory-node">
+        <div class="node-title">📑 AUTOMATED DOCUMENT PIPELINE PERFORMANCE METRICS</div>
+        <p>Localized script logs bypassing administrative bottleneck constraints. Generates compliant signature-ready mitigation logs within milliseconds of a field collision incident.</p>
+        
+        <div class="pipeline-box">
+            <div class="text-white" style="margin-bottom: 15px; font-weight: bold;">[INCIDENT VECTOR COMPILATION SELECTION]</div>
+            
+            <div class="pipeline-controls">
+                <button class="pipeline-btn" onclick="triggerPipeline('window')">Execute Log: Window Deflection</button>
+                <button class="pipeline-btn" onclick="triggerPipeline('velocity')">Execute Log: Velocity Overflow</button>
+                <button class="pipeline-btn" onclick="triggerPipeline('desk')">Execute Log: Desk Encroachment</button>
+            </div>
+
+            <div class="terminal-display" id="pipeline-log-output">>> Select an incident vector button above to generate automated protocol text fields...</div>
+        </div>
+    </section>
+
+    <!-- RECORD HISTORY INDEX -->
+    <section class="directory-node">
+        <div class="node-title">📋 ACTIVE SYSTEM INCIDENT METADATA MATRIX</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Incident Vector</th>
+                    <th>Severity Layer</th>
+                    <th>Generation Latency</th>
+                    <th>Target Output Payload</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Classroom Window Deflection</b></td>
+                    <td><span class="badge-alert" style="color:#ffaa00; border-color:#ffaa00; background:rgba(255,170,0,0.1)">HIGH</span></td>
+                    <td>120ms</td>
+                    <td><code>apology_template_v2_structural.pdf</code></td>
+                </tr>
+                <tr>
+                    <td><b>Corridor Velocity Overflow</b></td>
+                    <td><span class="badge-alert" style="color:#ffaa00; border-color:#ffaa00; background:rgba(255,170,0,0.1)">MEDIUM</span></td>
+                    <td>45ms</td>
+                    <td><code>apology_template_v1_accidental.pdf</code></td>
+                </tr>
+                <tr>
+                    <td><b>Headmistress Desk Encroachment</b></td>
+                    <td><span class="badge-alert">CRITICAL</span></td>
+                    <td>12ms</td>
+                    <td><code>emergency_parental_signature_spoof.sh</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <p class="text-dim"><i>*Note: All demerit payloads are signed with custom cryptographic keys to bypass manual administrative review layers before the end of the school period.*</i></p>
+    </section>
+</div>
+
+<script>
+    const templates = {
+        window: `===========================================================================
+[GENERATION PROTOCOL SYSTEM INITIALIZED] -> VECTOR: WINDOW_DEFLECTION
+===========================================================================
+To: Head of Department / Authority Node
+Subject: Formal Clarification: Kinetic Ball Vector Realignment
+
+Please accept this automated log as clarification regarding the spatial trajectory breakdown that occurred during the mid-day recess interval. 
+
+While practicing high-impact fluid stroke mechanics inside the 15-step clearance zone adjacent to the administrative desks, the ball encountered an unexpected structural window pane. The resulting deflection was a pure mathematical calculation error regarding wind shear friction constants, not willful property destruction. 
+
+Attached please find standard apology criteria v2. Structural compensation protocols are pending allocation of pocket capital balances.
+
+Signed,
+User: GOOGLEHUB67 [Aarav Patel]`,
+
+        velocity: `===========================================================================
+[GENERATION PROTOCOL SYSTEM INITIALIZED] -> VECTOR: CORRIDOR_VELOCITY_OVERFLOW
+===========================================================================
+To: Floor Monitor Duty Authority
+Subject: Operational Apology: Velocity Index Overflow
+
+This text segment logs formal contrition regarding the acceleration event observed in the central corridor block. 
+
+The velocity spike was completely accidental and triggered by an operational rush to compile code blocks before the conclusion of the laboratory server period. My path vector crossed directly into standard corridor constraints, causing friction with the structural architecture. 
+
+Corrective measures have been initialized to throttle cornering speeds to nominal limits during peak passing cycles.
+
+Signed,
+User: GOOGLEHUB67 [Aarav Patel]`,
+
+        desk: `===========================================================================
+[ALERT PORT] -> EXECUTING ROUTINE: EMERGENCY_PARENTAL_SIGNATURE_SPOOF.SH
+===========================================================================
+[!] CRITICAL LAYER ENGAGED: HEADMISTRESS DESK ENCROACHMENT DETECTED.
+[!] SYSTEM STATUS: ENCRYPTING ADMINISTRATIVE WRITE FLAGS.
+
+[AUTOMATED COMPILATION STRING INJECTED]:
+---------------------------------------------------------------------------
+Dear Headmistress,
+I am writing to confirm that I have reviewed the telemetry logs regarding Aarav's recent high-velocity space encroachment parameters near your office layout. 
+
+We have adjusted his internal disciplinary rules block at home. He will maintain maximum focus on static textbook logic streams and cease all field-testing cricket mechanics for a duration of 7 operational days.
+
+Verified Signature Matrix Token: [ 0x7F99BA23D4 ]
+---------------------------------------------------------------------------
+[+] Status: Payload signed with localized key overrides. Ready for direct integration.`
+    };
+
+    function triggerPipeline(vectorKey) {
+        const outputBox = document.getElementById('pipeline-log-output');
+        if (templates[vectorKey]) {
+            outputBox.innerHTML = templates[vectorKey];
+            outputBox.scrollTop = 0;
+        }
+    }
+</script>
+</body>
+</html>
