@@ -8,6 +8,36 @@
     <title>Subsystem // Engineering Blueprints & Repos</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
+        .terminal-search-wrapper {
+            margin-bottom: 25px;
+            max-width: 600px;
+        }
+        .search-row {
+            display: flex;
+            align-items: center;
+            background: #000;
+            border: 1px solid var(--dark-green);
+            padding: 8px 12px;
+            font-family: var(--font-stack);
+        }
+        .search-prompt {
+            color: var(--terminal-green);
+            margin-right: 10px;
+            font-weight: bold;
+            user-select: none;
+        }
+        .cli-input {
+            background: transparent;
+            border: none;
+            color: var(--text-white);
+            font-family: var(--font-stack);
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+        }
+        .cli-input::placeholder {
+            color: #333;
+        }
         .filter-controls {
             margin-bottom: 20px;
             display: flex;
@@ -56,7 +86,15 @@
 
     <section class="directory-node">
         <div class="node-title">🛠️ CENTRAL PRODUCTION CODES & REPOSITORY INDEX</div>
-        <p style="margin-bottom: 25px;">Indexing public software nodes compiled across core development modules. Total tracked arrays: <span class="text-white"><b>{{ site.data.repos.size }} Production Repositories Active</b></span>.</p>
+        <p style="margin-bottom: 20px;">Indexing public software nodes compiled across core development modules. Total tracked arrays: <span class="text-white"><b>{{ site.data.repos.size }} Production Repositories Active</b></span>.</p>
+
+        <!-- LIVE TERMINAL FUZZY SEARCH INTERFACE ENGINE -->
+        <div class="terminal-search-wrapper">
+            <div class="search-row">
+                <span class="search-prompt">GoogleHub67:~\$ grep -i</span>
+                <input type="text" id="cli-search-query" class="cli-input" placeholder="type script query strings to scan descriptors..." autocomplete="off" spellcheck="false">
+            </div>
+        </div>
 
         <!-- DYNAMIC FILTER CONTROLS CONTAINER -->
         <div class="filter-controls" id="dynamic-filter-bar">
@@ -66,7 +104,11 @@
         <!-- REPOSITORY CARDS CONTAINER -->
         <div class="repo-matrix-grid">
             {% for repo in site.data.repos %}
-            <div class="archive-card" data-cat="{{ repo.cat | downcase | strip }}">
+            {% assign lower_name = repo.name | downcase %}
+            {% assign lower_desc = repo.desc | downcase %}
+            <div class="archive-card" 
+                 data-cat="{{ repo.cat | downcase | strip }}"
+                 data-search-blob="{{ lower_name }} {{ lower_desc }} {{ repo.lang | join: ' ' | downcase }}">
                 <h3><a href="{{ repo.url }}" target="_blank">{{ repo.name }}</a></h3>
                 <p style="font-size: 0.9rem; margin: 8px 0; min-height: 54px;">{{ repo.desc }}</p>
                 <div style="margin-top: 12px;">
@@ -84,9 +126,11 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const filterBar = document.getElementById('dynamic-filter-bar');
+        const searchInput = document.getElementById('cli-search-query');
         const cards = document.querySelectorAll('.archive-card');
         
-        // Translation dictionary for clean visual button display names
+        let currentActiveCategory = 'all';
+
         const labelTransform = {
             "dflt": "Profiles",
             "sys": "Systems",
@@ -100,44 +144,54 @@
             "app": "Desktop Apps"
         };
 
-        // Scan all rendered cards and collect every unique category tag
+        // Scan rendered elements to extract dynamic search tags
         const categories = new Set();
         cards.forEach(card => {
             const cat = card.getAttribute('data-cat');
             if (cat) categories.add(cat);
         });
 
-        // Build the baseline "All Assets" control node
         let buttonsHTML = `<button class="filter-btn active-filter" data-target="all">All Assets</button>`;
-
-        // Loop through unique tags found to assemble custom buttons automatically
         categories.forEach(cat => {
             const visualName = labelTransform[cat] || cat;
             buttonsHTML += `<button class="filter-btn" data-target="${cat}">${visualName}</button>`;
         });
-
-        // Mount all computed buttons to the DOM
         filterBar.innerHTML = buttonsHTML;
 
-        // Attach an event listener to the container for clean click routing
-        filterBar.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('filter-btn')) return;
-
-            // Manage active button styling states toggle cleanly
-            filterBar.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active-filter'));
-            e.target.classList.add('active-filter');
-
-            const selection = e.target.getAttribute('data-target');
-
-            // Toggle card layout visibility states natively using target data properties
+        // Core execution loop sorting elements across both conditions concurrently
+        function runSystemMatrixFilter() {
+            const searchTerms = searchInput.value.toLowerCase().trim().split(/\s+/);
+            
             cards.forEach(card => {
                 const cardCat = card.getAttribute('data-cat');
-                if (selection === 'all' || cardCat === selection) {
+                const searchBlob = card.getAttribute('data-search-blob');
+                
+                // Check Condition A: Tag Category Alignment
+                const matchesCategory = (currentActiveCategory === 'all' || cardCat === currentActiveCategory);
+                
+                // Check Condition B: Continuous Fuzzy Text Pattern Alignment
+                const matchesSearch = searchTerms.every(term => searchBlob.includes(term));
+                
+                if (matchesCategory && matchesSearch) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
                 }
             });
+        }
+
+        // Connect Input Listener Engine to execute key updates instantenously
+        searchInput.addEventListener('input', runSystemMatrixFilter);
+
+        // Click event tracking loops for category updates
+        filterBar.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('filter-btn')) return;
+
+            filterBar.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active-filter'));
+            e.target.classList.add('active-filter');
+
+            currentActiveCategory = e.target.getAttribute('data-target');
+            runSystemMatrixFilter();
         });
     });
 </script>
