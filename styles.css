@@ -1,0 +1,86 @@
+/* ===========================================================================
+   [STYLE ENGINE] - TERMINAL GLOBAL UI LAYER
+   =========================================================================== */
+:root {
+    --bg-color: #050505;
+    --mainframe-black: #000000;
+    --terminal-green: #33ff33;
+    --dim-green: #1a991a;
+    --dark-green: #0a330a;
+    --alert-red: #ff3333;
+    --alert-bg: #1a0000;
+    --text-white: #e6e6e6;
+    --font-stack: 'Courier New', Courier, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    background-color: var(--bg-color);
+    color: var(--terminal-green);
+    font-family: var(--font-stack);
+    padding: 20px;
+    line-height: 1.6;
+}
+a {
+    color: var(--text-white);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--terminal-green);
+}
+a:hover {
+    color: var(--terminal-green);
+    background-color: var(--dark-green);
+}
+.mainframe-container {
+    max-width: 1050px;
+    margin: 0 auto;
+    border: 1px solid var(--dim-green);
+    padding: 25px;
+    background-color: var(--mainframe-black);
+    box-shadow: 0 0 20px rgba(51, 255, 51, 0.15);
+}
+.system-header {
+    border-bottom: 2px dashed var(--dim-green);
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+.alert-banner {
+    border: 1px solid var(--alert-red);
+    background-color: var(--alert-bg);
+    color: var(--alert-red);
+    padding: 15px;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+}
+.directory-node {
+    margin-bottom: 40px;
+    border: 1px solid rgba(26, 153, 26, 0.3);
+    padding: 20px;
+}
+.node-title {
+    color: var(--mainframe-black);
+    background-color: var(--terminal-green);
+    display: inline-block;
+    padding: 3px 12px;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+.grid-2col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+.data-table th, .data-table td {
+    border: 1px solid var(--dim-green);
+    padding: 10px;
+    text-align: left;
+}
+.data-table th { background-color: var(--dark-green); color: var(--text-white); }
+.data-table tr:nth-child(even) { background-color: #031403; }
+.pulse { animation: blink 1.8s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
