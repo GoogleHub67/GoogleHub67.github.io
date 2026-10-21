@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsystem // Kinetic Strategy & Biomechanics</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .calc-box {
+            background-color: #000000;
+            border: 1px dashed var(--dim-green);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .input-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .input-group {
+            flex: 1;
+            min-width: 140px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-white);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .input-group input {
+            width: 100%;
+            background: #0d0d0d;
+            border: 1px solid var(--dim-green);
+            color: var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+        .calc-btn {
+            background: var(--dark-green);
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 10px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .calc-btn:hover {
+            background: var(--terminal-green);
+            color: #000;
+        }
+        .telemetry-readout {
+            border-top: 1px dashed var(--dim-green);
+            margin-top: 15px;
+            padding-top: 15px;
+            white-space: pre-wrap;
+            color: var(--text-white);
+        }
+    </style>
+</head>
+<body>
+<div class="mainframe-container">
+    <header class="system-header">
+        <p>[CORE NODE] > SKILLS > CRICKET</p>
+        <p><a href="../../index.html">&lt;&lt; RETURN TO CENTRAL MAINFRAME</a></p>
+    </header>
+
+    <section class="directory-node">
+        <div class="node-title">🏏 KINETIC STRATEGY & IMPACT BIOMECHANICS</div>
+        <p>Telemetry parsing for batting impact mechanics, sweet-spot vector targeting, launch angles, and ball trajectory models.</p>
+        
+        <div class="calc-box">
+            <div class="text-white" style="margin-bottom: 15px; font-weight: bold;">[TRAJECTORY & SWEET-SPOT VECTOR CALCULATION MATRIX]</div>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Inbound Speed (km/h)</label>
+                    <input type="number" id="ball-speed" value="140" min="60" max="160">
+                </div>
+                <div class="input-group">
+                    <label>Launch Angle (°)</label>
+                    <input type="number" id="launch-angle" value="35" min="0" max="90">
+                </div>
+                <div class="input-group">
+                    <label>Impact Efficiency (%)</label>
+                    <input type="number" id="sweet-spot" value="95" min="10" max="100">
+                </div>
+            </div>
+
+            <button class="calc-btn" onclick="executeKineticModel()">Execute Simulation</button>
+
+            <div class="telemetry-readout" id="kinetic-output">>> Waiting for simulation sequence parameters...</div>
+        </div>
+    </section>
+
+    <section class="directory-node">
+        <div class="node-title">📋 TRACKED BIOMECHANICAL DOMAINS</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Mechanical Vector</th>
+                    <th>Analytical Purpose</th>
+                    <th>Computational Model</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Launch Geometry</b></td>
+                    <td>Calculates peak trajectory paths over boundary lines.</td>
+                    <td>Parabolic equations with drag constants.</td>
+                </tr>
+                <tr>
+                    <td><b>Sweet-Spot Deviation</b></td>
+                    <td>Tracks power attenuation relative to edge hits.</td>
+                    <td>Coefficient of Restitution (CoR) parsing.</td>
+                </tr>
+                <tr>
+                    <td><b>Rotational Torque</b></td>
+                    <td>Measures wrist-roll rates for down-the-ground power.</td>
+                    <td>Angular velocity tracking loops.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script>
+    function executeKineticModel() {
+        const vIn = parseFloat(document.getElementById('ball-speed').value) || 0;
+        const theta = parseFloat(document.getElementById('launch-angle').value) || 0;
+        const eEff = parseFloat(document.getElementById('sweet-spot').value) || 0;
+
+        // Convert km/h to m/s
+        const vInMeters = vIn / 3.6;
+        
+        // Approximate outbound velocity based on impact efficiency and bat speed swing generation matrix
+        const vBatMock = 25; // Constant estimated professional down-swing speed m/s
+        const coR = (eEff / 100) * 0.55; // Base leather-on-willow bounce coefficient
+        const vExit = (coR * vInMeters) + ((1 + coR) * vBatMock);
+        
+        // Convert back to km/h for dashboard display
+        const vExitKmh = vExit * 3.6;
+
+        // Project baseline projectile displacement metrics (ignoring basic atmosphere fluid drag vectors)
+        const rad = theta * (Math.PI / 180);
+        const g = 9.81;
+        const distance = (Math.pow(vExit, 2) * Math.sin(2 * rad)) / g;
+        const maxApex = (Math.pow(vExit, 2) * Math.pow(Math.sin(rad), 2)) / (2 * g);
+
+        // Generate output buffer logs
+        let log = `== [KINETIC SIMULATION DATA STREAM INITIALIZED] ==\n`;
+        log += `[+] Estimated Exit Velocity : ${vExitKmh.toFixed(2)} km/h\n`;
+        log += `[+] Total Linear Range      : ${distance.toFixed(2)} meters\n`;
+        log += `[+] Peak Apex Displacement   : ${maxApex.toFixed(2)} meters\n\n`;
+
+        if (distance >= 75) {
+            log += `<span style="color: var(--terminal-green)">[STATUS]: CRITICAL POWER SECTOR PENETRATION // CLEAR MAXIMUM SIX</span>`;
+        } else if (distance >= 55) {
+            log += `<span style="color: var(--text-white)">[STATUS]: MID-RANGE FLUSH OUTBOUND // SAFE BOUNDARY SECTOR RUNS</span>`;
+        } else {
+            log += `<span style="color: var(--alert-red)">[STATUS]: UNBALANCED ATTENUATION // POSSIBLE INFIELD CATCH HAZARD DETECTED</span>`;
+        }
+
+        document.getElementById('kinetic-output').innerHTML = log;
+    }
+
+    // Run baseline calculation on page startup
+    document.addEventListener("DOMContentLoaded", executeKineticModel);
+</script>
+</body>
+</html>
