@@ -35,7 +35,7 @@
             gap: 20px;
         }
         .archive-card {
-            display: block; /* Default state */
+            display: block;
         }
         .tag-pill {
             font-size: 0.7rem;
@@ -56,22 +56,17 @@
 
     <section class="directory-node">
         <div class="node-title">🛠️ CENTRAL PRODUCTION CODES & REPOSITORY INDEX</div>
-        <!-- Jekyll outputs the size of your array automatically on compile -->
         <p style="margin-bottom: 25px;">Indexing public software nodes compiled across core development modules. Total tracked arrays: <span class="text-white"><b>{{ site.data.repos.size }} Production Repositories Active</b></span>.</p>
 
-        <!-- FILTER CONTROLS -->
-        <div class="filter-controls">
-            <button class="filter-btn active-filter" onclick="filterMatrix('all')">All Assets</button>
-            <button class="filter-btn" onclick="filterMatrix('chess')">Chess Logic</button>
-            <button class="filter-btn" onclick="filterMatrix('python')">Python Cores</button>
-            <button class="filter-btn" onclick="filterMatrix('infra')">Infrastructure</button>
+        <!-- DYNAMIC FILTER CONTROLS CONTAINER -->
+        <div class="filter-controls" id="dynamic-filter-bar">
+            <!-- Buttons will be automatically built by JavaScript on execution initialization -->
         </div>
 
         <!-- REPOSITORY CARDS CONTAINER -->
         <div class="repo-matrix-grid">
-            <!-- Jekyll compiles this list directly on the server -->
             {% for repo in site.data.repos %}
-            <div class="archive-card" data-cat="{{ repo.cat }}">
+            <div class="archive-card" data-cat="{{ repo.cat | downcase | strip }}">
                 <h3><a href="{{ repo.url }}" target="_blank">{{ repo.name }}</a></h3>
                 <p style="font-size: 0.9rem; margin: 8px 0; min-height: 54px;">{{ repo.desc }}</p>
                 <div style="margin-top: 12px;">
@@ -85,26 +80,49 @@
 </div>
 
 <script>
-    // Lightweight script to filter cards directly via CSS visibility toggles
-    function filterMatrix(category) {
-        // Handle control button highlights
-        const buttons = document.querySelectorAll('.filter-btn');
-        buttons.forEach(btn => btn.classList.remove('active-filter'));
-        if (window.event && window.event.target) {
-            window.event.target.classList.add('active-filter');
-        }
-
-        // Toggle card layouts based on categories
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterBar = document.getElementById('dynamic-filter-bar');
         const cards = document.querySelectorAll('.archive-card');
+        
+        // Step 1: Scan all rendered cards and collect every unique category tag
+        const categories = new Set();
         cards.forEach(card => {
-            const cardCategory = card.getAttribute('data-cat');
-            if (category === 'all' || cardCategory === category) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
+            const cat = card.getAttribute('data-cat');
+            if (cat) categories.add(cat);
         });
-    }
+
+        // Step 2: Build the baseline "All Assets" control node
+        let buttonsHTML = `<button class="filter-btn active-filter" data-target="all">All Assets</button>`;
+
+        // Step 3: Loop through unique tags found to assemble custom buttons automatically
+        categories.forEach(cat => {
+            buttonsHTML += `<button class="filter-btn" data-target="${cat}">${cat}</button>`;
+        });
+
+        // Mount all computed buttons to the DOM
+        filterBar.innerHTML = buttonsHTML;
+
+        // Step 4: Attach a single event listener to the container for clean click routing
+        filterBar.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('filter-btn')) return;
+
+            // Manage active button styling states toggle cleanly
+            filterBar.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active-filter'));
+            e.target.classList.add('active-filter');
+
+            const selection = e.target.getAttribute('data-target');
+
+            // Toggle card layout visibility states natively using target data properties
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-cat');
+                if (selection === 'all' || cardCat === selection) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>
