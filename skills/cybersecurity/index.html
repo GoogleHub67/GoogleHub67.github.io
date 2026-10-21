@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsystem // PII Redaction Sandbox</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .sandbox-box {
+            background-color: #000000;
+            border: 1px dashed var(--dim-green);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .text-area-group {
+            margin-bottom: 15px;
+        }
+        .text-area-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-white);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .text-area-group textarea {
+            width: 100%;
+            height: 120px;
+            background: #0d0d0d;
+            border: 1px solid var(--dim-green);
+            color: var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 10px;
+            font-size: 0.95rem;
+            outline: none;
+            resize: vertical;
+        }
+        .action-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .sandbox-btn {
+            background: var(--dark-green);
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+            font-family: var(--font-stack);
+            padding: 10px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .sandbox-btn:hover {
+            background: var(--terminal-green);
+            color: #000;
+        }
+        .logs-readout {
+            border-top: 1px dashed var(--dim-green);
+            margin-top: 15px;
+            padding-top: 15px;
+            white-space: pre-wrap;
+            color: var(--text-white);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<div class="mainframe-container">
+    <header class="system-header">
+        <p>[CORE NODE] > SKILLS > CYBERSECURITY</p>
+        <p><a href="../../index.html">&lt;&lt; RETURN TO CENTRAL MAINFRAME</a></p>
+    </header>
+
+    <section class="directory-node">
+        <div class="node-title">🛡️ PII REDACTION SANDBOX & DATA PURGE ENGINE</div>
+        <p>Localized client-side compilation layer for sanitizing raw log streams. Sanitizes emails, IPv4 addresses, credit card numbers, and secret tokens before cloud piping protocols.</p>
+        
+        <div class="sandbox-box">
+            <div class="text-white" style="margin-bottom: 15px; font-weight: bold;">[RAW DATA INGESTION MATRIX]</div>
+            
+            <div class="text-area-group">
+                <label>Input Raw Payload Log Stream</label>
+                <textarea id="raw-payload" placeholder="Paste dirty log outputs containing PII here... e.g., 'User admin logged in from 192.168.1.45. Contact developer@googlehub67.io or verify card 4111-2222-3333-4444'"></textarea>
+            </div>
+
+            <div class="action-row">
+                <button class="sandbox-btn" onclick="executeRedactionEngine()">Purge Payload</button>
+            </div>
+
+            <div class="text-area-group">
+                <label>Sanitized Output Stream</label>
+                <textarea id="sanitized-payload" readonly placeholder="Purged logs will output here..."></textarea>
+            </div>
+
+            <div class="logs-readout" id="engine-telemetry">>> Sandbox idle. Insert raw buffer for deep compilation sanitization loop...</div>
+        </div>
+    </section>
+
+    <section class="directory-node">
+        <div class="node-title">📋 ACTIVE REGEX PURGE MATRIX</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Target Vector</th>
+                    <th>Pattern Definition</th>
+                    <th>Mask Signature</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Email Signatures</b></td>
+                    <td><code>[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}</code></td>
+                    <td><code>[REDACTED_EMAIL]</code></td>
+                </tr>
+                <tr>
+                    <td><b>IPv4 Addresses</b></td>
+                    <td><code>\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b</code></td>
+                    <td><code>[REDACTED_IP]</code></td>
+                </tr>
+                <tr>
+                    <td><b>Financial Indicators</b></td>
+                    <td><code>\b(?:\d[ -]*?){13,16}\b</code></td>
+                    <td><code>[REDACTED_CARD_NUMBER]</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script>
+    function executeRedactionEngine() {
+        const inputData = document.getElementById('raw-payload').value;
+        if (!inputData.trim()) {
+            document.getElementById('engine-telemetry').innerHTML = `<span style="color: var(--alert-red)">[!] ERROR: Input buffer empty. Transmission halted.</span>`;
+            return;
+        }
+
+        // Processing patterns
+        const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+        const ipRegex = /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/g;
+        const cardRegex = /\b(?:\d[ -]*?){13,16}\b/g;
+
+        // Count violations
+        const emailMatches = (inputData.match(emailRegex) || []).length;
+        const ipMatches = (inputData.match(ipRegex) || []).length;
+        const cardMatches = (inputData.match(cardRegex) || []).length;
+        const totalViolations = emailMatches + ipMatches + cardMatches;
+
+        // Perform cascading substitution loop
+        let purgedResult = inputData;
+        purgedResult = purgedResult.replace(emailRegex, "[REDACTED_EMAIL]");
+        purgedResult = purgedResult.replace(ipRegex, "[REDACTED_IP]");
+        purgedResult = purgedResult.replace(cardRegex, "[REDACTED_CARD_NUMBER]");
+
+        document.getElementById('sanitized-payload').value = purgedResult;
+
+        // Compile metric feedback telemetry
+        let metrics = `== [REDACTION COMPILATION FINALIZED] ==\n`;
+        metrics += `[+] Email Leaks Discovered    : ${emailMatches}\n`;
+        metrics += `[+] Network IP Leaks Deflected : ${ipMatches}\n`;
+        metrics += `[+] Credit Card Masks Deployed : ${cardMatches}\n`;
+        metrics += `[+] Total Threat Vectors Purged: ${totalViolations}\n\n`;
+
+        if (totalViolations > 0) {
+            metrics += `<span style="color: var(--terminal-green)">[STATUS]: SANITIZATION SUCCESSFUL // MEMORY POOL STABLE</span>`;
+        } else {
+            metrics += `<span style="color: var(--text-dim)">[STATUS]: CLEAN STREAM // NO PII DETECTED IN INGESTION FRAME</span>`;
+        }
+
+        document.getElementById('engine-telemetry').innerHTML = metrics;
+    }
+</script>
+</body>
+</html>
