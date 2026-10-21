@@ -63,6 +63,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
             gap: 20px;
+            margin-bottom: 50px;
         }
         .archive-card {
             display: block;
@@ -74,6 +75,59 @@
             border: 1px solid var(--dark-green);
             color: var(--text-white);
             margin-right: 5px;
+        }
+        /* Merged Glossary Section Styling Sheets */
+        .glossary-node {
+            border-top: 1px dashed var(--dark-green);
+            padding-top: 40px;
+            margin-top: 50px;
+        }
+        .terminal-block {
+            background: #000;
+            border: 1px solid var(--dark-green);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            font-family: var(--font-stack);
+        }
+        .token-title {
+            color: var(--terminal-green);
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .token-badge {
+            background: var(--dark-green);
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+            font-size: 0.7rem;
+            padding: 1px 6px;
+            border-radius: 2px;
+        }
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-family: var(--font-stack);
+            font-size: 0.9rem;
+        }
+        .spec-table th, .spec-table td {
+            border: 1px solid var(--dark-green);
+            padding: 10px;
+            text-align: left;
+        }
+        .spec-table th {
+            background: #0a0a0a;
+            color: var(--terminal-green);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+        .meta-highlight {
+            color: var(--text-white);
+            font-weight: bold;
         }
     </style>
 </head>
@@ -98,10 +152,10 @@
 
         <!-- DYNAMIC FILTER CONTROLS CONTAINER -->
         <div class="filter-controls" id="dynamic-filter-bar">
-            <!-- Buttons are automatically built by JavaScript on execution initialization -->
+            <!-- Buttons are automatically built by JavaScript on initialization -->
         </div>
 
-        <!-- REPOSITORY CARDS CONTAINER -->
+        <!-- REPOSITORY CARDS GRID MATRIX -->
         <div class="repo-matrix-grid">
             {% for repo in site.data.repos %}
             {% assign lower_name = repo.name | downcase %}
@@ -120,6 +174,74 @@
             </div>
             {% endfor %}
         </div>
+    </section>
+
+    <!-- MERGED GLOSSARY AND ARCHITECTURAL TOKENS SEGMENT -->
+    <section class="glossary-node">
+        <div class="node-title">📋 SYSTEM TOKENS METADATA GLOSSARY</div>
+        <p style="margin-bottom: 25px;">Documentation layout specifying data routing definitions, compilation boundaries, and core operational weights for categories used across your stack footprint.</p>
+
+        <div class="terminal-block">
+            <div class="token-title"><span class="token-badge">dflt</span> Core Profiles & Readme Hubs</div>
+            <p>Mainframe identity anchors, central landing directories, and automated markdown profile landing cards.</p>
+        </div>
+
+        <div class="terminal-block">
+            <div class="token-title"><span class="token-badge">sys</span> System Environment Mechanics</div>
+            <p>Low-level operating system configurations, text terminals, native file mappers, and custom-compiled large-scale browser engine mirrors.</p>
+        </div>
+
+        <div class="terminal-block">
+            <div class="token-title"><span class="token-badge">ops</span> Automation Engines & DevOps Pipelines</div>
+            <p>Autonomous script runners, platform background synchronization scripts, cross-platform source mirrors, and following-auditors.</p>
+        </div>
+
+        <div class="terminal-block">
+            <div class="token-title"><span class="token-badge">chess</span> Algorithmic Matchmaking Trees</div>
+            <p>High-volatility mathematical gameplay architectures, automated Lichess communication hooks, and square collision parsing networks.</p>
+        </div>
+
+        <div class="terminal-block">
+            <div class="token-title"><span class="token-badge">game</span> Core Simulators & Prank Shells</div>
+            <p>Interactive arcade renderers and high-alert terminal simulation payloads engineered strictly for local response validation and developer training.</p>
+        </div>
+
+        <div class="terminal-block">
+            <div class="token-title"><span class="token-badge">lang</span> Language Foundations & Sandboxes</div>
+            <p>Structured academic logic loops, microcontroller register configurations, and mathematical visualization scripting matrices.</p>
+        </div>
+
+        <div class="terminal-block">
+            <div class="token-title"><span class="token-badge">web</span> Client Application Presenters</div>
+            <p>High-throughput browser user extensions, client presentation views, and calculator engines compiled natively down to browser runtimes.</p>
+        </div>
+
+        <div class="terminal-block">
+            <div class="token-title"><span class="token-badge">db</span> Relational Schemas & CTE Queries</div>
+            <p>End-to-end relational database structures checking customer lifecycle trajectories and transaction risks via deep SQL joins.</p>
+        </div>
+
+        <!-- METRIC DATA TABLE OVERVIEW -->
+        <table class="spec-table">
+            <thead>
+                <tr>
+                    <th>Token ID</th>
+                    <th>Visual Allocation Name</th>
+                    <th>Primary Stack Focus</th>
+                    <th>Weight (30 Repos)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="meta-highlight">dflt</span></td><td>Profiles & Entry Pages</td><td>HTML, Markdown, JSON</td><td>10.00%</td></tr>
+                <tr><td><span class="meta-highlight">sys</span></td><td>System Configurations</td><td>C++, Shell, Scala, Python</td><td>13.33%</td></tr>
+                <tr><td><span class="meta-highlight">ops</span></td><td>Automation / DevOps</td><td>YAML, Ruby, Python, TypeScript, C</td><td>16.66%</td></tr>
+                <tr><td><span class="meta-highlight">chess</span></td><td>Chess Logic Engines</td><td>Python, JavaScript</td><td>16.66%</td></tr>
+                <tr><td><span class="meta-highlight">game</span></td><td>Simulators / Pranks</td><td>Java, C++, Batchfile, Shell</td><td>13.33%</td></tr>
+                <tr><td><span class="meta-highlight">lang</span></td><td>Runtimes / Frameworks</td><td>Python, C++, R</td><td>10.00%</td></tr>
+                <tr><td><span class="meta-highlight">web</span></td><td>Web Framework Modules</td><td>HTML, Rust, WebAssembly, JavaScript</td><td>10.00%</td></tr>
+                <tr><td><span class="meta-highlight">db</span></td><td>Relational Databases</td><td>MySQL, PostgreSQL Structure</td><td>3.33%</td></tr>
+            </tbody>
+        </table>
     </section>
 </div>
 
@@ -144,7 +266,6 @@
             "app": "Desktop Apps"
         };
 
-        // Scan rendered elements to extract dynamic search tags
         const categories = new Set();
         cards.forEach(card => {
             const cat = card.getAttribute('data-cat');
@@ -158,7 +279,6 @@
         });
         filterBar.innerHTML = buttonsHTML;
 
-        // Core execution loop sorting elements across both conditions concurrently
         function runSystemMatrixFilter() {
             const searchTerms = searchInput.value.toLowerCase().trim().split(/\s+/);
             
@@ -166,10 +286,7 @@
                 const cardCat = card.getAttribute('data-cat');
                 const searchBlob = card.getAttribute('data-search-blob');
                 
-                // Check Condition A: Tag Category Alignment
                 const matchesCategory = (currentActiveCategory === 'all' || cardCat === currentActiveCategory);
-                
-                // Check Condition B: Continuous Fuzzy Text Pattern Alignment
                 const matchesSearch = searchTerms.every(term => searchBlob.includes(term));
                 
                 if (matchesCategory && matchesSearch) {
@@ -180,10 +297,8 @@
             });
         }
 
-        // Connect Input Listener Engine to execute key updates instantenously
         searchInput.addEventListener('input', runSystemMatrixFilter);
 
-        // Click event tracking loops for category updates
         filterBar.addEventListener('click', (e) => {
             if (!e.target.classList.contains('filter-btn')) return;
 
