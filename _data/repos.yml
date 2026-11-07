@@ -1,8 +1,14 @@
+- name: "brainrot-programming-lang"
+  desc: "A high-performance framework transpiling custom logic structures into type-safe, optimized TypeScript execution contexts using a high-speed text mapping matrix."
+  lang: "TypeScript"
+  cat: "game"
+  url: "https://github.com/GoogleHub67/brainrot-programming-lang"
+
 - name: "meme-programming-language"
   desc: "A Scala 3 compilation engine executing unique script files (.cap) written entirely with internet meme and brainrot terms."
   lang: "Scala"
   cat: "game"
-  url: "https://github.com/GoogleHub67/meme-programming-language
+  url: "https://github.com/GoogleHub67/meme-programming-language"
   
 - name: "julia-pdf-reader"
   desc: "A lightweight Julia-based PDF reader built for high-performance text extraction, seamless metadata parsing, and efficient document workflows."
